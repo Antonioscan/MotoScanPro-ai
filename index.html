@@ -4,25 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MotoScanPro</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>MotoScanPro</h1>
 
-  <div id="button-container">
-    <button id="newPartsBtn" class="orange-button">RICAMBI NUOVI</button>
-    <button id="usedPartsBtn" class="orange-button">RICAMBI USATI</button>
-  </div>
+  <!-- Pulsanti iniziali -->
+  <button id="nuovo-btn" class="category-btn">RICAMBI NUOVI</button>
+  <button id="usato-btn" class="category-btn">RICAMBI USATI</button>
 
-  <div id="upload-container" style="display: none;">
-    <button id="addPhotoBtn" class="add-photo-button">Aggiungi foto</button>
-    <input type="file" id="fileInput" accept="image/*" capture="environment" style="display:none;" />
-  </div>
+  <!-- Pulsante centrale nascosto -->
+  <button id="add-photo-btn" class="add-photo-btn" style="display: none;">📷 AGGIUNGI FOTO</button>
 
-  <div id="preview-container">
-    <img id="main-preview" src="" alt="Anteprima" style="display: none;" />
-    <div id="thumbnails"></div>
-  </div>
+  <!-- Input fotocamera nascosto -->
+  <input type="file" id="upload-input" accept="image/*" capture="environment" style="display: none;" />
+
+  <!-- Area anteprima -->
+  <img id="main-preview" class="main-preview" style="display: none;" />
+
+  <!-- Miniature -->
+  <div id="thumbnails" class="thumbnail-wrapper"></div>
 
   <script src="script.js"></script>
 </body>
