@@ -9,11 +9,7 @@ exports.handler = async function(event) {
         Authorization: `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        inputs: {
-          image
-        }
-      })
+      body: JSON.stringify({ inputs: { image } })
     });
 
     const data = await response.json();
@@ -24,7 +20,7 @@ exports.handler = async function(event) {
   } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Errore nell\'analisi immagine', details: err.message })
+      body: JSON.stringify({ error: 'Errore AI', details: err.message })
     };
   }
 };
