@@ -1,0 +1,9 @@
+{
+  "name": "motoscanpro-ai",
+  "version": "1.0.0",
+  "description": "Riconoscimento componenti moto tramite AI e generazione inserzioni",
+  "main": "index.html",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
