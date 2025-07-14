@@ -1,0 +1,10 @@
+{
+  "name": "motoscanpro-ai",
+  "version": "1.0.0",
+  "description": "AI Moto Ricambi - Schede da immagine",
+  "main": "index.html",
+  "scripts": {},
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
