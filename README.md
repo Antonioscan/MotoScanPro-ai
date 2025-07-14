@@ -1,17 +1,10 @@
-# MotoScanPro-ai
+# MotoScanPro-AI
 
-App web per il riconoscimento automatico di componenti moto tramite foto.  
-Genera schede tecniche da immagini e suggerisce codice, prezzo medio e descrizione.
+Demo AI per riconoscimento componenti moto tramite fotocamera (iOS/Android).  
+Funzionalità:
+- Selezione tipo ricambio (nuovo/usato)
+- Apertura fotocamera diretta
+- Upload e anteprima immagine
+- Integrazione futura con AI Hugging Face
 
-## 🔧 Funzionalità
-- Pulsanti "Ricambi Nuovi" / "Ricambi Usati"
-- Apertura automatica della fotocamera su smartphone
-- AI OpenAI Vision per l’analisi tecnica del ricambio
-- Generazione automatica scheda da immagine
-
-## 🚀 Come eseguire
-
-### 1. Clona il progetto
-```bash
-git clone https://github.com/tuo-utente/MotoScanPro-ai.git
-cd MotoScanPro-ai
+Deploy: [https://motoscanpro-ai.netlify.app](https://motoscanpro-ai.netlify.app)
