@@ -9,13 +9,16 @@
 <body>
   <h1>MotoScanPro</h1>
 
-  <div class="button-container">
-    <button id="btn-nuovi" class="action-button" onclick="selectType('nuovo')">RICAMBI NUOVI</button>
-    <button id="btn-usati" class="action-button" onclick="selectType('usato')">RICAMBI USATI</button>
+  <div id="sceltaTipo">
+    <button onclick="selezionaTipo('nuovo')">RICAMBI NUOVI</button>
+    <button onclick="selezionaTipo('usato')">RICAMBI USATI</button>
   </div>
 
-  <input type="file" id="fileInput" accept="image/*" capture="environment" style="display:none" onchange="handleFile(event)">
-  <div id="previewContainer"></div>
+  <div id="uploadContainer" style="display:none;">
+    <input type="file" accept="image/*" capture="environment" onchange="caricaFoto(event)" id="fileInput" />
+    <div id="anteprimaContainer"></div>
+    <div id="miniatureContainer"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
