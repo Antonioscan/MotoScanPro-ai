@@ -4,20 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MotoScanPro</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>MotoScanPro</h1>
-
-  <button id="nuovo-btn" class="category-btn">RICAMBI NUOVI</button>
-  <button id="usato-btn" class="category-btn">RICAMBI USATI</button>
-
-  <button id="add-photo-btn" class="add-photo-btn" style="display: none;">📷 AGGIUNGI FOTO</button>
-  <input type="file" id="upload-input" accept="image/*" capture="environment" style="display: none;" />
-
-  <img id="main-preview" class="main-preview" style="display: none;" />
-  <div id="thumbnails" class="thumbnail-wrapper"></div>
-
+  <div class="button-container" id="choiceButtons">
+    <button class="orange-button" onclick="setChoice('nuovi')">RICAMBI NUOVI</button>
+    <button class="orange-button" onclick="setChoice('usati')">RICAMBI USATI</button>
+  </div>
+  <div id="uploadSection" style="display: none;">
+    <button class="add-photo-btn" onclick="triggerFileInput()">Aggiungi foto</button>
+    <input type="file" accept="image/*" capture="environment" id="fileInput" style="display: none;" onchange="handleFile(event)">
+  </div>
+  <div id="previewContainer">
+    <img id="mainPreview" />
+    <div id="thumbnails"></div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
