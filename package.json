@@ -2,9 +2,12 @@
   "name": "motoscanpro-ai",
   "version": "1.0.0",
   "scripts": {
-    "start": "netlify dev"
+    "start": "lite-server"
   },
   "dependencies": {
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
   }
 }
