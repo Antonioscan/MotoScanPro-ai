@@ -1,10 +1,13 @@
-# MotoScanPro-AI
+# MotoScanPro-ai
 
-Demo AI per riconoscimento componenti moto tramite fotocamera (iOS/Android).  
-Funzionalità:
-- Selezione tipo ricambio (nuovo/usato)
-- Apertura fotocamera diretta
-- Upload e anteprima immagine
-- Integrazione futura con AI Hugging Face
+Un'app web per fotografare e identificare componenti moto (nuovi o usati), con anteprima foto, gestione miniature e invio dati all'AI.
 
-Deploy: [https://motoscanpro-ai.netlify.app](https://motoscanpro-ai.netlify.app)
+## Funzionalità
+
+- Apertura diretta della fotocamera da smartphone.
+- Caricamento fino a 6 immagini.
+- Visualizzazione dinamica di miniature e anteprima centrale.
+- Integrazione con AI (Hugging Face API).
+- Hosting su Netlify.
+
+## Struttura del progetto
