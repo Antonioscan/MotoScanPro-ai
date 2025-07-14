@@ -1,44 +1,77 @@
-let tipoRicambio = null;
-let immagini = [];
-let immagineSelezionata = null;
+let selectedCategory = null;
+let imageFiles = [];
+let currentPreviewIndex = 0;
 
-function selezionaTipo(tipo) {
-  tipoRicambio = tipo;
-  document.getElementById("sceltaTipo").style.display = "none";
-  document.getElementById("uploadContainer").style.display = "block";
-}
+const nuovoBtn = document.getElementById('nuovo-btn');
+const usatoBtn = document.getElementById('usato-btn');
+const addPhotoBtn = document.getElementById('add-photo-btn');
+const uploadInput = document.getElementById('upload-input');
+const mainPreview = document.getElementById('main-preview');
+const thumbnailsContainer = document.getElementById('thumbnails');
 
-function caricaFoto(event) {
-  const file = event.target.files[0];
-  if (!file) return;
+nuovoBtn.onclick = () => selectCategory('nuovo');
+usatoBtn.onclick = () => selectCategory('usato');
 
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    immagini.push(e.target.result);
-    immagineSelezionata = immagini.length - 1;
-    mostraAnteprima();
-    mostraMiniature();
-  };
-  reader.readAsDataURL(file);
-}
+addPhotoBtn.onclick = () => {
+  uploadInput.click();
+};
 
-function mostraAnteprima() {
-  const container = document.getElementById("anteprimaContainer");
-  container.innerHTML = `<img src="${immagini[immagineSelezionata]}" alt="Anteprima">`;
-}
-
-function mostraMiniature() {
-  const container = document.getElementById("miniatureContainer");
-  container.innerHTML = "";
-  immagini.forEach((imgSrc, index) => {
-    const mini = document.createElement("img");
-    mini.src = imgSrc;
-    mini.classList.toggle("selezionata", index === immagineSelezionata);
-    mini.onclick = () => {
-      immagineSelezionata = index;
-      mostraAnteprima();
-      mostraMiniature();
+uploadInput.onchange = (event) => {
+  const files = Array.from(event.target.files);
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      imageFiles.push(e.target.result);
+      updatePreviews();
     };
-    container.appendChild(mini);
+    reader.readAsDataURL(file);
+  });
+  uploadInput.value = ''; // reset input
+};
+
+function selectCategory(category) {
+  selectedCategory = category;
+  nuovoBtn.style.display = 'none';
+  usatoBtn.style.display = 'none';
+  addPhotoBtn.style.display = 'inline-block';
+}
+
+function updatePreviews() {
+  if (imageFiles.length === 0) {
+    mainPreview.src = '';
+    mainPreview.style.display = 'none';
+    thumbnailsContainer.innerHTML = '';
+    return;
+  }
+
+  mainPreview.style.display = 'block';
+  mainPreview.src = imageFiles[currentPreviewIndex];
+
+  thumbnailsContainer.innerHTML = '';
+  imageFiles.forEach((img, index) => {
+    const container = document.createElement('div');
+    container.classList.add('thumbnail-container');
+
+    const thumb = document.createElement('img');
+    thumb.src = img;
+    thumb.classList.add('thumbnail');
+    if (index === currentPreviewIndex) thumb.classList.add('selected');
+    thumb.onclick = () => {
+      currentPreviewIndex = index;
+      updatePreviews();
+    };
+
+    const deleteBtn = document.createElement('div');
+    deleteBtn.classList.add('delete-icon');
+    deleteBtn.innerHTML = '🗑️';
+    deleteBtn.onclick = () => {
+      imageFiles.splice(index, 1);
+      if (currentPreviewIndex >= imageFiles.length) currentPreviewIndex = imageFiles.length - 1;
+      updatePreviews();
+    };
+
+    container.appendChild(thumb);
+    container.appendChild(deleteBtn);
+    thumbnailsContainer.appendChild(container);
   });
 }
