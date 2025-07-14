@@ -1,20 +1,30 @@
-let tipoSelezionato = null;
+let tipoRicambio = null;
 
-document.getElementById("newPartsBtn").addEventListener("click", () => {
-  tipoSelezionato = "nuovo";
-  localStorage.setItem("tipoRicambio", tipoSelezionato);
-  mostraInputFoto();
-});
+function selectType(tipo) {
+  tipoRicambio = tipo;
 
-document.getElementById("usedPartsBtn").addEventListener("click", () => {
-  tipoSelezionato = "usato";
-  localStorage.setItem("tipoRicambio", tipoSelezionato);
-  mostraInputFoto();
-});
+  document.getElementById("btn-nuovi").style.display = "none";
+  document.getElementById("btn-usati").style.display = "none";
 
-function mostraInputFoto() {
-  document.getElementById("newPartsBtn").style.display = "none";
-  document.getElementById("usedPartsBtn").style.display = "none";
-  document.getElementById("photoSection").style.display = "block";
-  document.getElementById("photoInput").click(); // apre direttamente la fotocamera
+  const fileInput = document.getElementById("fileInput");
+  fileInput.click();
+}
+
+function handleFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const previewContainer = document.getElementById("previewContainer");
+    previewContainer.innerHTML = '';
+
+    const img = document.createElement("img");
+    img.src = e.target.result;
+    img.alt = "Anteprima";
+    previewContainer.appendChild(img);
+  };
+  reader.readAsDataURL(file);
+
+  console.log("Tipo selezionato:", tipoRicambio);
 }
