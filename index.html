@@ -8,18 +8,22 @@
 </head>
 <body>
   <h1>MotoScanPro</h1>
+
   <div class="button-container" id="choiceButtons">
     <button class="orange-button" onclick="setChoice('nuovi')">RICAMBI NUOVI</button>
     <button class="orange-button" onclick="setChoice('usati')">RICAMBI USATI</button>
   </div>
+
   <div id="uploadSection" style="display: none;">
-    <button class="add-photo-btn" onclick="triggerFileInput()">Aggiungi foto</button>
+    <button class="add-photo-btn" onclick="triggerFileInput()" id="addPhotoBtn">Aggiungi foto</button>
     <input type="file" accept="image/*" capture="environment" id="fileInput" style="display: none;" onchange="handleFile(event)">
   </div>
+
   <div id="previewContainer">
     <img id="mainPreview" />
     <div id="thumbnails"></div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
