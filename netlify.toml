@@ -2,6 +2,9 @@
   functions = "netlify/functions"
   publish = "."
 
+[dev]
+  command = "npm run start"
+
 [[redirects]]
   from = "/api/analyze"
   to = "/.netlify/functions/analyze"
