@@ -1,9 +1,10 @@
 {
   "name": "motoscanpro-ai",
   "version": "1.0.0",
-  "description": "Riconoscimento componenti moto tramite AI e generazione inserzioni",
-  "main": "index.html",
+  "scripts": {
+    "start": "netlify dev"
+  },
   "dependencies": {
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^3.3.2"
   }
 }
