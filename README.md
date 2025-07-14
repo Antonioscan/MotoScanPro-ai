@@ -1,13 +1,26 @@
 # MotoScanPro-ai
 
-Un'app web per fotografare e identificare componenti moto (nuovi o usati), con anteprima foto, gestione miniature e invio dati all'AI.
+Webapp per caricare foto di ricambi moto (nuovi o usati), analizzarli con AI e creare anteprime visive.
 
 ## Funzionalità
 
-- Apertura diretta della fotocamera da smartphone.
-- Caricamento fino a 6 immagini.
-- Visualizzazione dinamica di miniature e anteprima centrale.
-- Integrazione con AI (Hugging Face API).
-- Hosting su Netlify.
+- Pulsanti per "Ricambi Nuovi" o "Usati"
+- Apertura diretta della fotocamera
+- Caricamento fino a 6 foto
+- Miniature cliccabili
+- Cestino per eliminare ogni foto
+- AI via HuggingFace
+- Deploy Netlify + Functions
 
-## Struttura del progetto
+## Struttura
+
+MotoScanPro-ai/
+├── netlify/
+│   └── functions/
+│       └── analyze.js
+├── index.html
+├── style.css
+├── script.js
+├── netlify.toml
+├── package.json
+└── README.md
