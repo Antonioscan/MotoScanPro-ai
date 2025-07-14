@@ -2,22 +2,26 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MotoScanPro</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>MotoScanPro</h1>
 
-  <div id="sceltaTipo">
-    <button onclick="selezionaTipo('nuovo')">RICAMBI NUOVI</button>
-    <button onclick="selezionaTipo('usato')">RICAMBI USATI</button>
+  <div id="button-container">
+    <button id="newPartsBtn" class="orange-button">RICAMBI NUOVI</button>
+    <button id="usedPartsBtn" class="orange-button">RICAMBI USATI</button>
   </div>
 
-  <div id="uploadContainer" style="display:none;">
-    <input type="file" accept="image/*" capture="environment" onchange="caricaFoto(event)" id="fileInput" />
-    <div id="anteprimaContainer"></div>
-    <div id="miniatureContainer"></div>
+  <div id="upload-container" style="display: none;">
+    <button id="addPhotoBtn" class="add-photo-button">Aggiungi foto</button>
+    <input type="file" id="fileInput" accept="image/*" capture="environment" style="display:none;" />
+  </div>
+
+  <div id="preview-container">
+    <img id="main-preview" src="" alt="Anteprima" style="display: none;" />
+    <div id="thumbnails"></div>
   </div>
 
   <script src="script.js"></script>
