@@ -1,32 +1,30 @@
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 
-exports.handler = async function (event) {
+exports.handler = async function(event) {
   try {
-    const { imageBase64 } = JSON.parse(event.body);
-
-    const response = await fetch("https://api-inference.huggingface.co/models/google/vit-base-patch16-224", {
-      method: "POST",
+    const { image } = JSON.parse(event.body);
+    const response = await fetch('https://api-inference.huggingface.co/models/openai/clip-vit-base-patch32', {
+      method: 'POST',
       headers: {
-        Authorization: `Bearer YOUR_HUGGINGFACE_TOKEN`,
-        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         inputs: {
-          image: imageBase64,
-        },
-      }),
+          image
+        }
+      })
     });
 
-    const result = await response.json();
-
+    const data = await response.json();
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify(data)
     };
-  } catch (error) {
+  } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Errore durante l'elaborazione AI" }),
+      body: JSON.stringify({ error: 'Errore nell\'analisi immagine', details: err.message })
     };
   }
 };
