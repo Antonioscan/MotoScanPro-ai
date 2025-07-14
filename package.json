@@ -1,13 +1,8 @@
 {
   "name": "motoscanpro-ai",
   "version": "1.0.0",
-  "scripts": {
-    "start": "lite-server"
-  },
+  "main": "index.js",
   "dependencies": {
-    "node-fetch": "^2.6.1"
-  },
-  "devDependencies": {
-    "lite-server": "^2.6.1"
+    "openai": "^4.0.0"
   }
 }
