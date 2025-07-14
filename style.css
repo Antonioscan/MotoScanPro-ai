@@ -1,41 +1,55 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
   text-align: center;
-  padding: 40px 20px;
-  color: #333;
+  padding: 20px;
+  background-color: #fafafa;
 }
 
 h1 {
-  color: #ff6600;
-  font-size: 2.2em;
+  color: #f26522;
+  font-size: 2em;
   margin-bottom: 30px;
 }
 
-.button-container {
-  margin-bottom: 20px;
-}
-
-.action-button {
-  background-color: orange;
-  border: none;
+button {
+  background-color: #f26522;
   color: white;
+  border: none;
   padding: 15px 30px;
   margin: 10px;
-  font-size: 18px;
   border-radius: 30px;
+  font-size: 16px;
   cursor: pointer;
-  width: 80%;
-  max-width: 300px;
 }
 
-.action-button:hover {
-  background-color: darkorange;
+button:hover {
+  opacity: 0.9;
 }
 
-#previewContainer img {
-  margin-top: 20px;
-  max-width: 90%;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+#anteprimaContainer img {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+#miniatureContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#miniatureContainer img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+#miniatureContainer img.selezionata {
+  border-color: #f26522;
 }
