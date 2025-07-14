@@ -7,21 +7,32 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>MotoScanPro</h1>
+  <h1 id="logo">MotoScanPro</h1>
 
-  <div class="button-container" id="choiceButtons">
-    <button class="orange-button" onclick="setChoice('nuovi')">RICAMBI NUOVI</button>
-    <button class="orange-button" onclick="setChoice('usati')">RICAMBI USATI</button>
+  <div id="button-container">
+    <button id="new-part-btn" class="action-button orange-button">RICAMBI NUOVI</button>
+    <button id="used-part-btn" class="action-button orange-button">RICAMBI USATI</button>
   </div>
 
-  <div id="uploadSection" style="display: none;">
-    <button class="add-photo-btn" onclick="triggerFileInput()" id="addPhotoBtn">Aggiungi foto</button>
-    <input type="file" accept="image/*" capture="environment" id="fileInput" style="display: none;" onchange="handleFile(event)">
+  <div id="upload-section" style="display: none;">
+    <button id="upload-btn" class="action-button orange-button">Aggiungi foto</button>
+    <input type="file" id="image-upload" accept="image/*" capture="environment" style="display: none;" multiple>
   </div>
 
-  <div id="previewContainer">
-    <img id="mainPreview" />
+  <div id="preview-section">
+    <img id="main-preview" src="" alt="Anteprima immagine" style="display: none;" />
     <div id="thumbnails"></div>
+  </div>
+
+  <div id="analyze-section" style="display: none;">
+    <button id="analyze-btn" class="action-button blue-button">Analizza con AI</button>
+  </div>
+
+  <div id="result-section" style="display: none;">
+    <h2 id="result-title"></h2>
+    <p id="result-code"></p>
+    <label>Prezzo medio (€): <input type="number" id="result-price" /></label>
+    <p id="result-description"></p>
   </div>
 
   <script src="script.js"></script>
