@@ -1,50 +1,44 @@
-const fetch = require("node-fetch");
+const openai = require("openai");
+openai.apiKey = process.env.OPENAI_API_KEY;
 
 exports.handler = async (event) => {
-  const { images, selectedType } = JSON.parse(event.body);
-  const prompt = `Descrivi questo componente per moto in massimo 5 righe, includi codice articolo, compatibilità e prezzo medio per ${selectedType}.`;
+  try {
+    const { images } = JSON.parse(event.body);
+    const base64Images = images.join("\n");
 
-  const image = images[0];
+    const prompt = `
+Analizza le seguenti immagini e descrivi cosa rappresentano. Se possibile:
+- Trova un nome identificativo per l’oggetto (es. "pinza freno Brembo").
+- Indica un codice prodotto generico.
+- Fornisci un prezzo medio di vendita.
 
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: "gpt-4-vision-preview",
-      messages: [
-        {
-          role: "user",
-          content: [
-            { type: "text", text: prompt },
-            {
-              type: "image_url",
-              image_url: {
-                url: image,
-              },
-            },
-          ],
-        },
-      ],
-      max_tokens: 400,
-    }),
-  });
+Immagini codificate (base64):
+${base64Images}
 
-  const result = await response.json();
-  const content = result.choices[0].message.content;
+Rispondi in JSON come:
+{
+  "description": "...",
+  "code": "...",
+  "price": "..."
+}
+    `;
 
-  const match = content.match(/codice[:\s]*([A-Z0-9]+)/i);
-  const price = content.match(/€ ?([\d,.]+)/) || ["", "120,00"];
-  const code = match ? match[1] : "ND";
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0.7,
+    });
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      description: content,
-      code,
-      price: price[1],
-    }),
-  };
+    const output = completion.choices[0].message.content;
+    const result = JSON.parse(output);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Errore analisi AI: " + err.message }),
+    };
+  }
 };
