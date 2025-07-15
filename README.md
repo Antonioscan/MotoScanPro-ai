@@ -1,14 +1,14 @@
-# MotoScanPro-AI
+# MotoScanPro AI
 
-Un'applicazione web che consente il riconoscimento automatico di ricambi moto tramite AI e la generazione di una scheda tecnica completa, con possibilità di pubblicazione su eBay.
+MotoScanPro è un'app AI che riconosce ricambi moto da foto, genera descrizione, codice e prezzo per pubblicazione su eBay o Subito.it.
 
-## Funzionalità principali
+## Funzioni principali
 
-- Scelta tra ricambi **nuovi** o **usati**
-- Caricamento di **fino a 5 foto**
-- Riconoscimento e analisi con **OpenAI GPT-4o**
-- Descrizione automatica del componente
-- Estrazione codice prodotto e prezzo medio
-- Modifica del prezzo prima della pubblicazione
+- Fotocamera per scattare fino a 6 foto
+- Analisi AI (OpenAI Vision)
+- Riconoscimento componente
+- Generazione codice prodotto
+- Prezzo suggerito modificabile
+- Pronto per Netlify
 
-## Struttura progetto
+## Avvio locale
