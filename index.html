@@ -8,24 +8,26 @@
 </head>
 <body>
   <h1>MotoScanPro</h1>
-  <div class="button-container">
-    <button id="newPartsBtn" class="orange-button">RICAMBI NUOVI</button>
-    <button id="usedPartsBtn" class="orange-button">RICAMBI USATI</button>
+
+  <div class="buttons">
+    <button class="orange-button" onclick="selectType('nuovo')">RICAMBI NUOVI</button>
+    <button class="orange-button" onclick="selectType('usato')">RICAMBI USATI</button>
   </div>
-  <input type="file" id="imageInput" accept="image/*" capture="environment" multiple style="display: none;" />
-  <button id="addPhotoBtn" class="orange-button hidden">Aggiungi foto</button>
 
-  <div id="mainImageContainer" class="main-image-container"></div>
-  <div id="thumbnailsContainer" class="thumbnails"></div>
+  <input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none" multiple onchange="handleFiles(this.files)"/>
+  <button id="addPhotoButton" class="orange-button" style="display:none" onclick="document.getElementById('imageInput').click()">Aggiungi foto</button>
 
-  <button id="analyzeBtn" class="orange-button hidden">Analizza con AI</button>
+  <div id="previewMain" class="main-preview"></div>
+  <div id="previewThumbs" class="thumbnail-container"></div>
 
-  <div id="aiResult" class="ai-result hidden">
+  <button id="analyzeButton" class="orange-button" style="display:none" onclick="analyzeImages()">Analizza con AI</button>
+
+  <div class="result-card" id="result">
     <h2>Descrizione AI</h2>
     <p id="description">Nessuna descrizione trovata</p>
     <p id="code">Codice: non disponibile</p>
-    <label for="price">Prezzo (€): </label>
-    <input type="text" id="price" />
+    <label for="price">Prezzo (€):</label>
+    <input type="number" id="price" />
   </div>
 
   <script src="script.js"></script>
