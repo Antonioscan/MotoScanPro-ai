@@ -1,31 +1,22 @@
-# MotoScanPro-AI
+# MotoScanPro AI
 
-Sistema AI per il riconoscimento intelligente di componenti moto da fotografie reali, utile per la pubblicazione di annunci online (es. eBay, Subito, ecc.).
+Web app per il riconoscimento di oggetti da foto tramite OpenAI Vision.
 
 ## Funzionalità
-- Caricamento fino a 6 foto per ciascun ricambio
-- Riconoscimento visivo con AI Hugging Face
-- Generazione descrizione professionale tramite OpenAI
-- Estrazione codice prodotto (se disponibile)
-- Stima prezzo medio di vendita (modificabile)
-- Ottimizzato per dispositivi mobili
 
-## Tecnologie
-- HTML, CSS, JS puro
-- Netlify Functions (serverless)
-- Hugging Face (BLIP image captioning)
-- OpenAI Chat GPT-4
+- Caricamento fino a 6 immagini
+- Selezione immagine principale
+- Analisi AI per descrizione professionale, codice e prezzo
 
 ## Hosting
-Il progetto è live su:  
-🔗 https://motoscanpro-ai.netlify.app
 
-## Variabili d’ambiente
-Configura nel pannello Netlify:
-- `HF_TOKEN` = token Hugging Face
-- `OPENAI_API_KEY` = API key di OpenAI
+Deploy automatico su Netlify:
+[https://motoscanpro-ai.netlify.app](https://motoscanpro-ai.netlify.app)
 
-## Avvio locale
-```bash
-npm install
-netlify dev
+## Backend
+
+La funzione serverless in `/netlify/functions/analyze.js` utilizza `gpt-4-vision-preview` per l'elaborazione.
+
+## API
+
+È necessario impostare la variabile `OPENAI_API_KEY` su Netlify.
