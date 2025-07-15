@@ -7,33 +7,25 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1 id="logo">MotoScanPro</h1>
+  <h1 class="title">MotoScanPro</h1>
 
-  <div id="button-container">
-    <button id="new-part-btn" class="action-button orange-button">RICAMBI NUOVI</button>
-    <button id="used-part-btn" class="action-button orange-button">RICAMBI USATI</button>
+  <div id="buttons">
+    <button id="newPartsBtn" class="orange-btn">RICAMBI NUOVI</button>
+    <button id="usedPartsBtn" class="orange-btn">RICAMBI USATI</button>
   </div>
 
-  <div id="upload-section" style="display: none;">
-    <button id="upload-btn" class="action-button orange-button">Aggiungi foto</button>
-    <input type="file" id="image-upload" accept="image/*" capture="environment" style="display: none;" multiple>
+  <div id="uploadSection" style="display: none;">
+    <button id="uploadBtn" class="orange-btn">Aggiungi foto</button>
+    <input type="file" id="fileInput" accept="image/*" capture="environment" style="display: none;" />
   </div>
 
-  <div id="preview-section">
-    <img id="main-preview" src="" alt="Anteprima immagine" style="display: none;" />
-    <div id="thumbnails"></div>
-  </div>
+  <div id="previewContainer"></div>
 
-  <div id="analyze-section" style="display: none;">
-    <button id="analyze-btn" class="action-button blue-button">Analizza con AI</button>
-  </div>
+  <div id="thumbnailContainer"></div>
 
-  <div id="result-section" style="display: none;">
-    <h2 id="result-title"></h2>
-    <p id="result-code"></p>
-    <label>Prezzo medio (€): <input type="number" id="result-price" /></label>
-    <p id="result-description"></p>
-  </div>
+  <button id="analyzeBtn" style="display:none;" class="orange-btn">Analizza con AI</button>
+
+  <div id="resultContainer"></div>
 
   <script src="script.js"></script>
 </body>
