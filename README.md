@@ -1,22 +1,19 @@
 # MotoScanPro AI
 
-Web app per il riconoscimento di oggetti da foto tramite OpenAI Vision.
+Web App per identificazione e descrizione automatica di componenti moto o oggetti.
 
 ## Funzionalità
 
-- Caricamento fino a 6 immagini
-- Selezione immagine principale
-- Analisi AI per descrizione professionale, codice e prezzo
+- Caricamento di 1–5 foto
+- Riconoscimento oggetto tramite AI OpenAI Vision
+- Generazione automatica di descrizione, codice prodotto, prezzo
+- UI mobile friendly
+- Hosting su Netlify con Netlify Functions
 
-## Hosting
+## Struttura
+- Frontend: HTML/CSS/JS
+- Backend: analyze.js con OpenAI GPT-4 Vision
+- Deployment: Netlify
 
-Deploy automatico su Netlify:
-[https://motoscanpro-ai.netlify.app](https://motoscanpro-ai.netlify.app)
-
-## Backend
-
-La funzione serverless in `/netlify/functions/analyze.js` utilizza `gpt-4-vision-preview` per l'elaborazione.
-
-## API
-
-È necessario impostare la variabile `OPENAI_API_KEY` su Netlify.
+## Configurazione
+Imposta `OPENAI_API_KEY` come variabile ambiente nel deploy Netlify.
