@@ -1,9 +1,6 @@
 [build]
-  functions = "netlify/functions"
-  publish = "."
-
-[dev]
-  functions = "netlify/functions"
+functions = "netlify/functions"
+publish = "."
 
 [functions]
-  external_node_modules = ["@huggingface/inference", "node-fetch"]
+node_bundler = "esbuild"
