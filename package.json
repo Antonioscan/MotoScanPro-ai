@@ -1,12 +1,18 @@
 {
   "name": "motoscanpro-ai",
   "version": "1.0.0",
-  "description": "MotoScanPro AI – Analisi visiva dei ricambi moto con AI",
-  "main": "index.js",
+  "description": "MotoScanPro-AI: riconoscimento componenti moto con AI + eBay",
+  "main": "index.html",
   "scripts": {
-    "start": "netlify dev"
+    "start": "netlify dev",
+    "build": "echo 'Build completata'"
   },
+  "author": "Antonio",
+  "license": "MIT",
   "dependencies": {
-    "openai": "^4.30.0"
+    "openai": "^4.27.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^15.6.0"
   }
 }
