@@ -2,32 +2,33 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MotoScanPro</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>MotoScanPro</h1>
 
-  <div id="buttons-container">
-    <button id="newPartBtn" class="orange-button">RICAMBI NUOVI</button>
-    <button id="usedPartBtn" class="orange-button">RICAMBI USATI</button>
+  <div class="buttons">
+    <button id="newPartBtn">RICAMBI NUOVI</button>
+    <button id="usedPartBtn">RICAMBI USATI</button>
   </div>
 
-  <input type="file" id="fileInput" accept="image/*" multiple style="display: none;" />
-
-  <div id="previewContainer">
-    <img id="mainPreview" src="" alt="Preview" style="display:none;" />
-    <div id="thumbnails"></div>
+  <div class="upload-section">
+    <input type="file" id="fileInput" accept="image/*" capture="environment" multiple hidden />
+    <button id="addPhotoBtn" style="display:none;">Aggiungi foto</button>
+    <div id="mainImageContainer" class="main-image-container"></div>
+    <div id="thumbnailContainer" class="thumbnail-container"></div>
   </div>
 
-  <button id="analyzeBtn" class="orange-button" style="display:none;">Analizza con AI</button>
+  <button id="analyzeBtn" style="display: none;">Analizza con AI</button>
 
-  <div id="resultBox" style="display:none;">
+  <div class="description-box">
     <h2>Descrizione AI</h2>
     <p id="description">Nessuna descrizione trovata</p>
     <p id="code">Codice: non disponibile</p>
-    <label>Prezzo (€): <input type="number" id="priceInput" /></label>
+    <label for="price">Prezzo (€):</label>
+    <input type="text" id="price" />
   </div>
 
   <script src="script.js"></script>
