@@ -4,41 +4,68 @@ openai.apiKey = process.env.OPENAI_API_KEY;
 exports.handler = async (event) => {
   try {
     const { images } = JSON.parse(event.body);
-    const base64Images = images.join("\n");
+
+    if (!images || images.length === 0) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Nessuna immagine fornita." }),
+      };
+    }
 
     const prompt = `
-Analizza le seguenti immagini e descrivi cosa rappresentano. Se possibile:
-- Trova un nome identificativo per l’oggetto (es. "pinza freno Brembo").
-- Indica un codice prodotto generico.
-- Fornisci un prezzo medio di vendita.
-
-Immagini codificate (base64):
-${base64Images}
-
-Rispondi in JSON come:
+Se stai osservando uno o più componenti per moto da queste foto, fornisci una breve descrizione professionale del componente identificato, un codice compatibile (se visibile o deducibile), e una stima realistica del prezzo di vendita.
+Formatta il risultato in JSON come:
 {
   "description": "...",
   "code": "...",
   "price": "..."
 }
-    `;
+Se le immagini non sono chiare o non mostrano oggetti validi, scrivi: descrizione assente.
+`;
+
+    const base64images = images.map((base64) => ({
+      type: "image_url",
+      image_url: { url: base64 }
+    }));
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o",
-      messages: [{ role: "user", content: prompt }],
-      temperature: 0.7,
+      model: "gpt-4-vision-preview",
+      messages: [
+        {
+          role: "user",
+          content: [
+            { type: "text", text: prompt },
+            ...base64images
+          ],
+        },
+      ],
+      max_tokens: 500,
     });
 
-    const output = completion.choices[0].message.content;
-    const result = JSON.parse(output);
+    const textResponse = completion.choices[0].message.content;
+
+    // Prova a estrarre descrizione e codice via regex JSON
+    let parsed = {};
+    try {
+      parsed = JSON.parse(textResponse);
+    } catch {
+      parsed.description = textResponse.trim();
+      parsed.code = "non disponibile";
+      parsed.price = "";
+    }
+
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify({
+        description: parsed.description || "Nessuna descrizione trovata",
+        code: parsed.code || "non disponibile",
+        price: parsed.price || ""
+      }),
     };
-  } catch (err) {
+  } catch (error) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Errore analisi AI: " + err.message }),
+      body: JSON.stringify({ error: "Errore analisi AI: " + error.message }),
     };
   }
 };
