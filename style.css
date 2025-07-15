@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+.title {
+  color: #000;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.orange-btn {
+  background-color: #f77c00;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+  border-radius: 25px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.orange-btn:hover {
+  background-color: #e56a00;
+}
+
+img.preview {
+  width: 90%;
+  max-width: 300px;
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin: 5px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.thumbnail.selected {
+  border-color: #f77c00;
+}
+
+.thumbnail-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.delete-icon {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 14px;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+}
