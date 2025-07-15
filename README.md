@@ -1,11 +1,14 @@
 # MotoScanPro-AI
 
-Sistema AI per riconoscimento, descrizione e valutazione componenti moto da foto. Ottimizzato per dispositivi mobili (iOS/Android).
+Un'applicazione web che consente il riconoscimento automatico di ricambi moto tramite AI e la generazione di una scheda tecnica completa, con possibilità di pubblicazione su eBay.
 
-## Funzionalità
+## Funzionalità principali
 
-- Scatto foto e caricamento da fotocamera
-- Fino a 6 foto con anteprime e cancellazione
-- Riconoscimento con OpenAI Vision
-- Generazione automatica scheda tecnica
-- Calcolo prezzo medio
+- Scelta tra ricambi **nuovi** o **usati**
+- Caricamento di **fino a 5 foto**
+- Riconoscimento e analisi con **OpenAI GPT-4o**
+- Descrizione automatica del componente
+- Estrazione codice prodotto e prezzo medio
+- Modifica del prezzo prima della pubblicazione
+
+## Struttura progetto
