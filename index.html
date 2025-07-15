@@ -7,26 +7,25 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1 id="title">MotoScanPro</h1>
-
-  <div id="button-container">
-    <button id="nuoviBtn" class="choice-button orange">RICAMBI NUOVI</button>
-    <button id="usatiBtn" class="choice-button orange">RICAMBI USATI</button>
+  <h1>MotoScanPro</h1>
+  <div class="button-container">
+    <button id="newPartsBtn" class="orange-button">RICAMBI NUOVI</button>
+    <button id="usedPartsBtn" class="orange-button">RICAMBI USATI</button>
   </div>
+  <input type="file" id="imageInput" accept="image/*" capture="environment" multiple style="display: none;" />
+  <button id="addPhotoBtn" class="orange-button hidden">Aggiungi foto</button>
 
-  <input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none" multiple />
-  <button id="addPhotoBtn" style="display:none" class="orange">Aggiungi foto</button>
+  <div id="mainImageContainer" class="main-image-container"></div>
+  <div id="thumbnailsContainer" class="thumbnails"></div>
 
-  <div id="previewContainer"></div>
+  <button id="analyzeBtn" class="orange-button hidden">Analizza con AI</button>
 
-  <button id="analyzeBtn" class="orange" style="display:none">Analizza con AI</button>
-
-  <div id="aiResult" class="result-box" style="display: none;">
+  <div id="aiResult" class="ai-result hidden">
     <h2>Descrizione AI</h2>
-    <p id="aiDescription">In attesa...</p>
-    <p id="aiCode"></p>
-    <label for="priceInput">Prezzo (€):</label>
-    <input type="number" id="priceInput" min="0" step="0.01">
+    <p id="description">Nessuna descrizione trovata</p>
+    <p id="code">Codice: non disponibile</p>
+    <label for="price">Prezzo (€): </label>
+    <input type="text" id="price" />
   </div>
 
   <script src="script.js"></script>
