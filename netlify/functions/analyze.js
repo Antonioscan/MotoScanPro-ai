@@ -1,52 +1,50 @@
-const { OpenAI } = require("openai");
+const fetch = require("node-fetch");
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+exports.handler = async (event) => {
+  const { images, selectedType } = JSON.parse(event.body);
+  const prompt = `Descrivi questo componente per moto in massimo 5 righe, includi codice articolo, compatibilità e prezzo medio per ${selectedType}.`;
 
-exports.handler = async function (event) {
-  try {
-    const { images } = JSON.parse(event.body);
-    const base64Images = images.map((img, index) => ({
-      type: "image_url",
-      image_url: { url: img, detail: "low" },
-    }));
+  const image = images[0];
 
-    const chat = await openai.chat.completions.create({
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
       model: "gpt-4-vision-preview",
       messages: [
         {
-          role: "system",
-          content:
-            "Sei un esperto ricambista per moto. Analizza le immagini, identifica il componente, descrivilo in modo tecnico, cerca il codice ricambio originale o compatibile e stima un prezzo medio di vendita. Rispondi solo con i 3 campi: descrizione, codice e prezzo.",
-        },
-        {
           role: "user",
           content: [
-            ...base64Images,
+            { type: "text", text: prompt },
             {
-              type: "text",
-              text: "Analizza le foto e genera descrizione, codice prodotto e prezzo.",
+              type: "image_url",
+              image_url: {
+                url: image,
+              },
             },
           ],
         },
       ],
-      max_tokens: 500,
-    });
+      max_tokens: 400,
+    }),
+  });
 
-    const reply = chat.choices[0].message.content;
-    const [descrizione, codice, prezzo] = reply.split("\n").map((r) => r.split(":")[1].trim());
+  const result = await response.json();
+  const content = result.choices[0].message.content;
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        description: descrizione,
-        code: codice,
-        price: prezzo,
-      }),
-    };
-  } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Errore durante l'analisi AI", details: error.message }),
-    };
-  }
+  const match = content.match(/codice[:\s]*([A-Z0-9]+)/i);
+  const price = content.match(/€ ?([\d,.]+)/) || ["", "120,00"];
+  const code = match ? match[1] : "ND";
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      description: content,
+      code,
+      price: price[1],
+    }),
+  };
 };
