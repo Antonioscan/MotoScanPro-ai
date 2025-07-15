@@ -1,58 +1,40 @@
-const { HfInference } = require("@huggingface/inference");
-const fetch = require("node-fetch");
-const hf = new HfInference(process.env.HF_TOKEN); // Token in ambiente Netlify
+const { Configuration, OpenAIApi } = require("openai");
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY
+});
+const openai = new OpenAIApi(configuration);
 
 exports.handler = async (event) => {
+  const { image } = JSON.parse(event.body);
+
   try {
-    const { images } = JSON.parse(event.body);
-
-    if (!images || images.length === 0) {
-      return { statusCode: 400, body: "Nessuna immagine ricevuta" };
-    }
-
-    // Analisi visiva solo della prima immagine
-    const visionResult = await hf.imageToText({
-      data: images[0],
-      model: "Salesforce/blip-image-captioning-base"
+    const response = await openai.chat.completions.create({
+      model: "gpt-4-vision-preview",
+      messages: [
+        {
+          role: "user",
+          content: [
+            { type: "text", text: "Riconosci questo oggetto e crea una descrizione professionale, riassuntiva e accurata. Includi codice articolo se visibile e un prezzo stimato se possibile." },
+            { type: "image_url", image_url: { url: image } }
+          ]
+        }
+      ],
+      max_tokens: 300
     });
 
-    const description = visionResult.generated_text || "Nessuna descrizione";
-
-    // Prompt testuale per completamento descrizione
-    const openaiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: "gpt-4",
-        messages: [
-          { role: "system", content: "Sei un esperto di ricambi moto. Riceverai una descrizione generica e dovrai scrivere una breve descrizione professionale, stimare il codice prodotto e indicare un prezzo medio di vendita." },
-          { role: "user", content: `Descrizione generica: ${description}` }
-        ],
-        temperature: 0.4
-      })
-    });
-
-    const aiText = await openaiResponse.json();
-    const reply = aiText.choices[0].message.content;
-
-    // Estrazione codice e prezzo
-    const matchCode = reply.match(/codice[:\s]*([A-Z0-9\-]+)/i);
-    const matchPrice = reply.match(/prezzo.*?(\d+[\.,]?\d*)/i);
-
+    const aiText = response.choices[0].message.content;
     return {
       statusCode: 200,
       body: JSON.stringify({
-        description: reply,
-        code: matchCode ? matchCode[1] : null,
-        price: matchPrice ? matchPrice[1].replace(",", ".") : null
+        description: aiText,
+        code: null
       })
     };
-
   } catch (err) {
-    console.error(err);
-    return { statusCode: 500, body: "Errore interno" };
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Errore AI", details: err.message })
+    };
   }
 };
