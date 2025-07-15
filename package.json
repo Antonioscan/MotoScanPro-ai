@@ -1,11 +1,13 @@
 {
   "name": "motoscanpro-ai",
   "version": "1.0.0",
-  "description": "MotoScanPro con AI per analisi ricambi da foto",
+  "description": "AI per il riconoscimento di componenti moto da foto",
+  "main": "index.js",
   "scripts": {
     "start": "netlify dev"
   },
   "dependencies": {
-    "openai": "^4.24.0"
+    "@huggingface/inference": "^2.4.1",
+    "node-fetch": "^3.3.2"
   }
 }
