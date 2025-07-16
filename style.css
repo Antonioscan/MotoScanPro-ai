@@ -1,0 +1,163 @@
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #000;
+}
+
+header {
+  padding: 20px;
+}
+
+.logo {
+  width: 42px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+h1 {
+  display: inline;
+  font-size: 26px;
+  vertical-align: middle;
+  font-weight: 700;
+}
+
+.button {
+  display: block;
+  margin: 20px auto;
+  padding: 15px;
+  width: 85%;
+  font-size: 18px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:active {
+  opacity: 0.9;
+}
+
+.product-card {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  text-align: left;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 12px 0 4px;
+}
+
+.product-info {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  float: right;
+  font-weight: bold;
+  color: #000;
+}
+
+.ebay-button {
+  background-color: #2196f3;
+  color: white;
+  padding: 14px;
+  width: 90%;
+  max-width: 400px;
+  font-size: 18px;
+  border: none;
+  border-radius: 14px;
+  margin: 20px auto;
+  display: block;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ebay-button:active {
+  opacity: 0.9;
+}
+
+#mainPreview {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 20px;
+  display: none;
+}
+
+.miniatures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.miniature-wrapper {
+  position: relative;
+}
+
+.miniature {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: rgba(255, 0, 0, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.delete-btn img {
+  width: 14px;
+  height: 14px;
+  filter: brightness(1000%);
+}
+
+#aiDescription {
+  background-color: #eef5ff;
+  border: 1px solid #aac;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 400px;
+  text-align: left;
+  font-size: 14px;
+  color: #111;
+}
+
+input[type="file"] {
+  display: none;
+}
