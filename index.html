@@ -5,33 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MotoScanPro</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 450px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      width: 48px;
+      vertical-align: middle;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 0;
+      display: inline-block;
+    }
+
+    .orange-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background-color: orange;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    .output-box {
+      background-color: #fff;
+      padding: 16px;
+      margin-top: 20px;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    #description {
+      width: 100%;
+      height: 100px;
+      margin: 8px 0;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    #code, #price {
+      width: 48%;
+      padding: 10px;
+      font-size: 14px;
+      margin: 4px 1%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>MotoScanPro</h1>
-  </header>
-
-  <main>
-    <div id="buttons">
-      <button id="newPartBtn" class="orange-btn">RICAMBI NUOVI</button>
-      <button id="usedPartBtn" class="orange-btn">RICAMBI USATI</button>
-      <button id="addPhotoBtn" class="orange-btn" style="display:none;">Aggiungi foto</button>
-      <!-- ✅ Fotocamera diretta su mobile -->
-      <input type="file" id="fileInput" accept="image/*" capture="environment" multiple style="display:none;" />
+  <div class="container">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px;">
+      <img src="https://img.icons8.com/ios-filled/50/motorcycle.png" alt="MotoScanPro Logo" class="logo" />
+      <h1>MotoScanPro</h1>
     </div>
 
-    <div id="mainImageContainer"></div>
-    <div id="thumbnailContainer"></div>
+    <main>
+      <div id="buttons">
+        <button id="newPartBtn" class="orange-btn">RICAMBI NUOVI</button>
+        <button id="usedPartBtn" class="orange-btn">RICAMBI USATI</button>
+        <button id="addPhotoBtn" class="orange-btn" style="display:none;">Aggiungi foto</button>
+        <input type="file" id="fileInput" accept="image/*" capture="environment" multiple style="display:none;" />
+      </div>
 
-    <button id="analyzeBtn" style="display:none;" class="orange-btn">Analizza con AI</button>
+      <div id="mainImageContainer"></div>
+      <div id="thumbnailContainer"></div>
 
-    <div id="analysisOutput" class="output-box">
-      <h2>Descrizione AI</h2>
-      <textarea id="description" placeholder="Nessuna descrizione trovata"></textarea>
-      <input id="code" type="text" placeholder="Codice prodotto" />
-      <input id="price" type="text" placeholder="Prezzo (€)" />
-    </div>
-  </main>
+      <button id="analyzeBtn" style="display:none;" class="orange-btn">Analizza con AI</button>
+
+      <div id="analysisOutput" class="output-box">
+        <h2>Descrizione AI</h2>
+        <textarea id="description" placeholder="Nessuna descrizione trovata"></textarea>
+        <input id="code" type="text" placeholder="Codice prodotto" />
+        <input id="price" type="text" placeholder="Prezzo (€)" />
+      </div>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
