@@ -34,8 +34,8 @@ Analizza accuratamente l'immagine per creare una descrizione professionale pront
 3. **Condizioni visive**: graffi, usura, rotture, oppure "in ottime condizioni".
 4. **Utilizzo consigliato**: per quali veicoli, motori, situazioni è adatto.
 5. **Codice prodotto**: se identificabile da foto o inciso.
-6. **Prezzo medio stimato (€)**: solo se deducibile da prodotti simili.
-
+6. **Prezzo medio stimato €**: solo se deducibile da prodotti simili.
+y
 Usa uno stile diretto, senza frasi introduttive, senza disclaimer e senza formule vaghe. Il testo deve essere perfettamente strutturato e pronto per la vendita.
                 `.trim(),
               },
