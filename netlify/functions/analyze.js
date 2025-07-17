@@ -37,7 +37,6 @@ Non scrivere frasi generiche, non scrivere che non puoi analizzare, non dare spi
 
 Aggiungi anche, se visibili o deducibili:
 - codice prodotto
-- prezzo medio stimato (in euro)
                 `.trim(),
               },
               {
