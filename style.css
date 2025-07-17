@@ -33,7 +33,7 @@ h1 {
 
 /* Logo MotoScanPro */
 .logo {
-  width: 48px;
+  width: 55px;
   vertical-align: middle;
 }
 
@@ -68,7 +68,7 @@ h1 {
 
 /* Area anteprima immagine principale */
 #mainImageContainer img {
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
   margin-top: 20px;
   border-radius: 8px;
