@@ -68,9 +68,9 @@ h1 {
 
 /* Area anteprima immagine principale */
 #mainImageContainer img {
-  max-width: 90%;
+  max-width: 120%;
   height: auto;
-  margin-top: 20px;
+  margin-top: 40px;
   border-radius: 8px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
 }
