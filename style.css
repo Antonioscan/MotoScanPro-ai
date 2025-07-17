@@ -132,16 +132,16 @@ h1 {
 
 textarea#description {
   width: 100%;
-  min-height: 140px;
-  max-height: 400px;
-  resize: vertical;
   padding: 10px;
   font-size: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
   margin-bottom: 15px;
-  overflow-y: auto;
+  overflow: hidden;
+  resize: none;
+  min-height: 100px;
+  height: auto;
 }
 
 /* Nuovo campo marca */
