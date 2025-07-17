@@ -27,16 +27,20 @@ exports.handler = async (event) => {
               {
                 type: "text",
                 text: `
-Analizza l'immagine e descrivi l'oggetto seguendo rigorosamente questo formato:
+Crea una descrizione professionale e sintetica per una futura vendita su eBay, basata sull'immagine allegata.
 
-1. **Marca e modello**: se riconoscibili o deducibili da una ricerca su eBay, Amazon o altri siti online. Se non identificabili, scrivi: "Non disponibile".
-2. **Caratteristiche descrittive**: usa solo frasi molto semplici e brevi.
-3. **Usure o danni visibili**: indica in modo chiaro se ci sono segni, graffi, rotture o condizioni visive evidenti.
+Segui questo formato:
+
+1. **Marca e modello**: se identificabili o ipotizzabili.
+2. **Descrizione tecnica**: componenti, dimensioni, compatibilità, specifiche.
+3. **Condizioni visive**: usura, graffi, stato (es. "in buone condizioni", "usato con segni di ruggine", ecc.).
+4. **Utilizzo consigliato**: per quali veicoli o situazioni è adatto.
+5. **Codice prodotto (se presente)**.
+6. **Prezzo medio stimato (se deducibile da prodotti simili)**.
+
+Usa uno stile chiaro e professionale, pronto per essere pubblicato su eBay. Non aggiungere disclaimer o frasi inutili.
 
 Non scrivere frasi generiche, non scrivere che non puoi analizzare, non dare spiegazioni. Rispondi sempre nel formato richiesto, anche in caso di informazioni parziali.
-
-Aggiungi anche, se visibili o deducibili:
-- codice prodotto
                 `.trim(),
               },
               {
